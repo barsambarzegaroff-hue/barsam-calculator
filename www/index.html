@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BARSAM Calculator</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    background:linear-gradient(135deg,#06142e,#00152b);
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+.calc{
+    width:330px;
+    padding:20px;
+    border-radius:25px;
+    background:#071b3a;
+    box-shadow:0 0 30px #006eff;
+}
+h2{
+    text-align:center;
+    color:#00aaff;
+    margin:5px 0 15px;
+}
+#display{
+    width:100%;
+    height:70px;
+    border:0;
+    outline:0;
+    border-radius:15px;
+    padding:10px;
+    font-size:30px;
+    text-align:right;
+    background:#020b1c;
+    color:#fff;
+    margin-bottom:15px;
+}
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+button{
+    height:60px;
+    border:0;
+    border-radius:15px;
+    background:#102d58;
+    color:white;
+    font-size:21px;
+    font-weight:bold;
+}
+button:active{
+    transform:scale(.93);
+    background:#006eff;
+}
+.op{background:#064b8f}
+.clear{background:#8b1538}
+.equal{
+    background:#007bff;
+    grid-column:span 2;
+}
+</style>
+</head>
+
+<body>
+<div class="calc">
+<h2>⚡ BARSAM CALC</h2>
+
+<input id="display" readonly>
+
+<div class="buttons">
+<button class="clear" onclick="clearDisplay()">C</button>
+<button onclick="del()">⌫</button>
+<button class="op" onclick="add('%')">%</button>
+<button class="op" onclick="add('/')">÷</button>
+
+<button onclick="add('7')">7</button>
+<button onclick="add('8')">8</button>
+<button onclick="add('9')">9</button>
+<button class="op" onclick="add('*')">×</button>
+
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+<button class="op" onclick="add('-')">−</button>
+
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+<button class="op" onclick="add('+')">+</button>
+
+<button onclick="add('0')">0</button>
+<button onclick="add('.')">.</button>
+<button class="equal" onclick="calculate()">=</button>
+</div>
+</div>
+
+<script>
+const display=document.getElementById("display");
+
+function add(x){
+    display.value+=x;
+}
+
+function clearDisplay(){
+    display.value="";
+}
+
+function del(){
+    display.value=display.value.slice(0,-1);
+}
+
+function calculate(){
+    try{
+        display.value=eval(display.value);
+    }catch{
+        display.value="Error";
+    }
+}
+</script>
+</body>
+</html>
